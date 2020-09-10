@@ -20,11 +20,6 @@ const Form = () => {
 		}
 		//updates our state with previous todos, and new todo added
 		setTodos([...todos, todo]);
-
-		//get total number of
-		let counter = 0;
-		counter = counter + 1;
-		console.log(counter);
 	};
 
 	const deleteTodo = indice => {

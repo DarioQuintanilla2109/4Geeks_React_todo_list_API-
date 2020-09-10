@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 //props that we are passing in
 // need to pass in index to know which todo to delete
 const Todo = ({ todo, index, deleteTodo }) => {
@@ -12,6 +12,12 @@ const Todo = ({ todo, index, deleteTodo }) => {
 			</button>
 		</div>
 	);
+};
+
+Todo.propTypes = {
+	todo: PropTypes.string,
+	index: PropTypes.number,
+	deleteTodo: PropTypes.string
 };
 
 export default Todo;
