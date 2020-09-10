@@ -6,37 +6,43 @@ const Form = () => {
 	const [todo, setTodo] = useState({});
 	//for our previous todos
 	const [todos, setTodos] = useState([
-		{ todo: "todo 1" },
-		{ todo: "todo 2" },
-		{ todo: "todo 3" }
+		// { todo: "todo 1" },
 	]);
 
-	//captures change event from our input
+	//captures change event from our input, and updates our state for single todo
 	const handleChange = e => setTodo({ [e.target.name]: e.target.value });
 
+	//checks for empty todo
 	const handleClick = e => {
 		if (Object.keys(todo).length === 0 || todo.todo.trim() === "") {
 			alert("empty list");
 			return;
 		}
+		//updates our state with previous todos, and new todo added
 		setTodos([...todos, todo]);
+
+		//get total number of
+		let counter = 0;
+		counter = counter + 1;
+		console.log(counter);
 	};
 
 	const deleteTodo = indice => {
 		const newTodos = [...todos];
+		//splicing
 		newTodos.splice(indice, 1);
+		//returns array with deleted todo
 		setTodos(newTodos);
 	};
 
+	//name on input line 37 same as key for our objects
 	return (
 		<>
 			<form onSubmit={e => e.preventDefault()}>
-				<h1> todos </h1>
 				<br />
 				<input type="text" name="todo" onChange={handleChange} />
 				<button onClick={handleClick}>save</button>
 			</form>
-
 			{todos.map((value, index) => (
 				<Todo
 					todo={value.todo}
@@ -45,6 +51,7 @@ const Form = () => {
 					deleteTodo={deleteTodo}
 				/>
 			))}
+			<div className="items-left">{todos.length} item left</div>
 		</>
 	);
 };
