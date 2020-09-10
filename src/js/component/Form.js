@@ -46,6 +46,7 @@ const Form = () => {
 					deleteTodo={deleteTodo}
 				/>
 			))}
+			<div className="line" />
 			<div className="items-left">{todos.length} item left</div>
 		</>
 	);

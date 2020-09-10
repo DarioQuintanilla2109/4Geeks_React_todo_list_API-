@@ -14,10 +14,11 @@ const Todo = ({ todo, index, deleteTodo }) => {
 	);
 };
 
+//prop type validation
 Todo.propTypes = {
 	todo: PropTypes.string,
 	index: PropTypes.number,
-	deleteTodo: PropTypes.string
+	deleteTodo: PropTypes.func
 };
 
 export default Todo;

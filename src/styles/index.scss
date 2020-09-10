@@ -56,10 +56,13 @@ form button {
 h5 {
   margin: 0;
   padding-right: 10px;
+
 }
 
 
-
+.line{
+      border-style: outset;
+}
 .list {
   display: flex;
   margin: 5px;
@@ -73,6 +76,19 @@ h5 {
     padding: 3px;
 }
 
+.todo:hover + .btn-delete {
+     cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: rgb(0, 225, 255);
+  height: 20px;
+  width: 20px;
+
+}
 
 .items-left{
     margin-right: auto;
@@ -83,7 +99,7 @@ h5 {
 
 .btn-delete {
   
-  cursor: pointer;
+   cursor: pointer;
   display: inline-block;
   text-align: center;
   text-decoration: none;
