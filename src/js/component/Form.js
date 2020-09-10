@@ -38,6 +38,7 @@ const Form = () => {
 				<input type="text" name="todo" onChange={handleChange} />
 				<button onClick={handleClick}>save</button>
 			</form>
+
 			{todos.map((value, index) => (
 				<Todo
 					todo={value.todo}
@@ -46,7 +47,7 @@ const Form = () => {
 					deleteTodo={deleteTodo}
 				/>
 			))}
-			<div className="line" />
+
 			<div className="items-left">{todos.length} item left</div>
 		</>
 	);
