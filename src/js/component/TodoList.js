@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Todo from "./Todo";
 
-const Form = () => {
+const TodoList = () => {
 	//for new todo
 	const [todo, setTodo] = useState({});
 	//for our previous todos
@@ -53,4 +53,4 @@ const Form = () => {
 	);
 };
 
-export default Form;
+export default TodoList;

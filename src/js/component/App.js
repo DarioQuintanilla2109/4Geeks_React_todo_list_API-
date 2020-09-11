@@ -1,13 +1,13 @@
 import React from "react";
 import "../../styles/index.scss";
-import Form from "./Form";
+import TodoList from "./TodoList";
 
 const App = () => {
 	return (
 		<div className="App">
 			<h1> todos </h1>
 			<div className="App-content">
-				<Form />
+				<TodoList />
 			</div>
 		</div>
 	);

@@ -8,6 +8,7 @@ h1 {
     font-size: 55px;
     color: rgb(255, 162, 240);
 }
+//our main container
 .App-content {
     padding-top: 10px;
     background-color: white;
@@ -25,15 +26,14 @@ h1 {
    
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 
+//where we enter our todo 
 form input {
   height: 26px;
   border-radius: 5%;
   display: flex;
+  //centers both vertically and horizantally because parent is flex
   vertical-align: auto;
 }
 
@@ -47,6 +47,7 @@ form button {
   margin: 2px 0;
   border: solid 1px transparent;
   border-radius: 4px;
+  
   padding: 0.5em 1em;
   color: #ffffff;
   background-color: rgb(255, 162, 240);
@@ -67,11 +68,12 @@ h5 {
     width: 100%;
     border-bottom: 1px solid rgb(177, 178, 179) ;
 }
+//
 .list {
   display: flex;
   margin: 5px;
   flex-direction: row;
-  align-items: flex-end;
+ 
 }
 
 //gets todo and button on same line
@@ -81,24 +83,24 @@ h5 {
     width: 100%;
 }
 
-.todo:hover + .btn-delete {
-     cursor: pointer;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  border: solid 1px transparent;
-  border-radius: 4px;
-  color: #ffffff;
-  background-color: rgb(0, 225, 255);
-  height: 20px;
-  width: 20px;
+//button initially hidden
+.todo .btn-delete{
+    display:none;
+}
+
+//display when hovering
+.todo:hover .btn-delete{
+    display: inline-block;
 
 }
 
+
+//number of items in todo list
 .items-left{
     margin-right: auto;
     font-size: 13px;
-    padding-left: 5px;
+    padding-left: 8px;
+    padding-top: 4px;
 }
 
 
