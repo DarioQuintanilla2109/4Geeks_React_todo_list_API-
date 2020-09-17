@@ -119,3 +119,20 @@ h5 {
   margin-left: auto;
   margin-right: 25px;
 }
+
+#clear-all{
+    
+  cursor: pointer;
+  display: inline-block;
+  
+  text-decoration: none;
+  margin: 2px 0;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  
+  padding: 0.5em 1em;
+  color: white;
+  background: rgb(255, 162, 240);
+  height: 30px;
+  width: 120px;
+}
