@@ -3,43 +3,57 @@ import Todo from "./Todo";
 
 const TodoList = () => {
 	//for new todo
-	const [todo, setTodo] = useState({});
+	const [todo, setTodo] = useState("");
 	//for our previous todos
 	const [todos, setTodos] = useState([
 		// { todo: "todo 1" },
 	]);
 
 	//captures change event from our input, and updates our state for single todo
-	const handleChange = e => setTodo({ [e.target.name]: e.target.value });
+	const handleChange = e => setTodo(e.target.value);
 
 	//checks for empty todo
 	//adds to list
 	const handleClick = e => {
-		if (Object.keys(todo).length === 0 || todo.todo.trim() === "") {
-			alert("empty list");
-			return;
-		}
-		fetch("https://assets.breatheco.de/apis/fake/todos/user/" + todo, {
-			method: "POST",
-			body: JSON.stringify(todos),
-			headers: {
-				"Content-Type": "application/json"
+		// if (Object.keys(todo).length === 0 || todo.todo.trim() === "") {
+		// 	alert("empty list");
+		// 	return;
+		// }
+		fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/darioQuintanilla",
+			{
+				method: "PUT",
+				body: JSON.stringify([
+					...todos,
+					{
+						label: todo,
+						done: false
+					}
+				]),
+				headers: new Headers({
+					"Content-Type": "application/json"
+				})
 			}
-		})
+		)
 			.then(resp => {
-				console.log(resp.ok); // will be true if the response is successfull
-				console.log(resp.status); // the status code = 200 or code = 400 etc.
-				console.log(resp.text()); // will try return the exact result as string
-				return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-			})
-			.then(data => {
-				//here is were your code should start after the fetch finishes
-				console.log(data); //this will print on the console the exact object received from the server
+				if (resp.ok) {
+					fetch(
+						"https://assets.breatheco.de/apis/fake/todos/user/darioQuintanilla"
+					)
+						.then(secondRespone => secondRespone.json())
+						.then(data => {
+							setTodos(data);
+							setTodo("");
+						});
+				} else {
+					alert("Somehing went worng" + resp.status);
+				}
 			})
 			.catch(error => {
 				//error handling
 				console.log(error);
 			});
+		//setTodos([...todos, todo]);
 	};
 
 	const deleteTodo = indice => {
@@ -64,7 +78,12 @@ const TodoList = () => {
 		<>
 			<form onSubmit={e => e.preventDefault()}>
 				<br />
-				<input type="text" name="todo" onChange={handleChange} />
+				<input
+					type="text"
+					name="todo"
+					onChange={handleChange}
+					value={todo}
+				/>
 				<button onClick={handleClick}>save</button>
 			</form>
 			<button id="clear-all" onClick={deleteAll}>
@@ -73,7 +92,7 @@ const TodoList = () => {
 
 			{todos.map((value, index) => (
 				<Todo
-					todo={value.todo}
+					todo={value.label}
 					key={index}
 					index={index}
 					deleteTodo={deleteTodo}
